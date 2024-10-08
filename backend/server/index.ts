@@ -27,7 +27,7 @@ interface TrafficData {
 const trafficData: TrafficData[] = [];
 
 // Load websites from random.json
-const websites = JSON.parse(fs.readFileSync(path.join(__dirname, 'random.json'), 'utf8'));
+const websites = JSON.parse(fs.readFileSync(path.join(__dirname, '../node_modules/dns.json'), 'utf8'));
 
 function ipToString(ip: any): string {
     if (typeof ip === 'string') return ip;
