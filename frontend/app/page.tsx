@@ -7,7 +7,7 @@ interface TrafficData {
   src_ip: string;
   dst_ip: string;
   protocol: number;
-  length: number;
+  length?: number; // Made optional to handle undefined
   domain: string;
   website: string; 
 }
@@ -21,7 +21,7 @@ const Home = () => {
   useEffect(() => {
     const fetchTrafficData = async () => {
       try {
-        const response = await fetch('http://localhost.local:4000/api/traffic');
+        const response = await fetch('http://localhost:4000/api/traffic');
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
@@ -73,7 +73,6 @@ const Home = () => {
                     <th className="px-6 py-3">Domain</th>
                     <th className="px-6 py-3">Website</th>
                     <th className="px-6 py-3">Protocol</th>
-                    <th className="px-6 py-3">Length</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-700">
@@ -85,7 +84,7 @@ const Home = () => {
                       <td className="px-6 py-4">{item.domain || 'N/A'}</td>
                       <td className="px-6 py-4 text-ellipsis overflow-hidden max-w-[200px]">{item.website || 'N/A'}</td>
                       <td className="px-6 py-4">{getProtocolName(item.protocol)}</td>
-                      <td className="px-6 py-4 text-right">{item.length} bytes</td>
+                      
                     </tr>
                   ))}
                 </tbody>
