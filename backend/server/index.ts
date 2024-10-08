@@ -26,7 +26,6 @@ interface TrafficData {
 
 const trafficData: TrafficData[] = [];
 
-// Load websites from random.json
 const websites = JSON.parse(fs.readFileSync(path.join(__dirname, '../node_modules/dns.json'), 'utf8'));
 
 function ipToString(ip: any): string {
@@ -52,7 +51,6 @@ pcapSession.on('packet', async (rawPacket) => {
         const srcIp = ipToString(ipHeader.saddr);
         const dstIp = ipToString(ipHeader.daddr);
 
-        // Get a random website from the JSON file
         const website = websites[Math.floor(Math.random() * websites.length)];
 
         try {
