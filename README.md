@@ -41,7 +41,7 @@ cd backend
 ```bash
 sudo npx ts-node server/index.ts
 ```
-Note
+Note-
 Running this application might require administrative privileges due to the use of pcap.
 The packet capture filter in index.ts is currently set to capture only TCP traffic on ports 80 and 443. Adjust this filter as needed.
 
